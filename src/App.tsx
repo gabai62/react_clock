@@ -13,7 +13,7 @@ type State = {
   clockName: string;
 };
 
-export class App extends React.Component<State> {
+export class App extends React.Component<{}, State> {
   state: State = {
     hasClock: true,
     clockName: 'Clock-0',
@@ -50,8 +50,9 @@ export class App extends React.Component<State> {
 
   componentDidUpdate(prevProps: {}, prevState: State): void {
     if (prevState.clockName !== this.state.clockName && prevState.hasClock) {
+      // eslint-disable-next-line no-console
       console.warn(
-        `Renamed from ${prevState.clockName} to ${this.state.clockName}`
+        `Renamed from ${prevState.clockName} to ${this.state.clockName}`,
       );
     }
   }
